@@ -1,0 +1,13 @@
+"PRODUCT DOMAIN","DATE","TIME TAKEN FOR TESTING","EXCEPTION"
+"https://memdropshipdemo.myshopify.com/products/deer-hunter-monogram-steel-sign","30-12-2023","03.517 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/deer-scene-steel-sign","30-12-2023","02.472 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/desert-life-monogram-steel-sign","30-12-2023","03.753 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/you-get-old-when-you-stop-riding-monogram-steel-sign",,,"Expected condition failed: waiting for element to be clickable: By.xpath: //div[@class='preview-root-app-wrapper'] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.130, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\LUCENT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52970}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52970/devtoo..., se:cdpVersion: 120.0.6099.130, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2d8ef3553635a9744bc72edbe9b917cc"
+"https://memdropshipdemo.myshopify.com/products/moon-and-back-monogram-steel-sign","30-12-2023","03.835 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/dog-love-stake-steel-sign","30-12-2023","02.709 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/antler-monogram-steel-sign","30-12-2023","02.385 SECONDS ",

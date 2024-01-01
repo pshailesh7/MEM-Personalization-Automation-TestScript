@@ -1,0 +1,21 @@
+"PRODUCT DOMAIN","DATE","TIME TAKEN","ERROR"
+"https://memdropshipdemo.myshopify.com/products/deer-hunter-monogram-steel-sign","30-12-2023","02.957 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/deer-scene-steel-sign","30-12-2023","02.613 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/desert-life-monogram-steel-sign","30-12-2023","04.75 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/you-get-old-when-you-stop-riding-monogram-steel-sign","30-12-2023","04.277 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/moon-and-back-monogram-steel-sign","30-12-2023","03.596 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/dog-love-stake-steel-sign","30-12-2023","02.538 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/antler-monogram-steel-sign","30-12-2023","03.350 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/dream-catcher-monogram-steel-sign","30-12-2023","03.50 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/address-steel-sign",,,"element click intercepted: Element <button class=""MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium footer-next-btn css-1hw9j7s"" tabindex=""0"" type=""button"">...</button> is not clickable at point (755, 381). Other element would receive the click: <svg xmlns=""http://www.w3.org/2000/svg"" xmlns:xlink=""http://www.w3.org/1999/xlink"" name=""MU-C072-00"" version=""1.1"" x=""0px"" y=""0px"" viewBox=""0 0 1000 1000"" style=""background-image: url(&quot;https://prodmyeasymonogram.s3.us-east-2.amazonaws.com/Product/05+-+Live+Preview+Backgrounds/BG1.png&quot;); background-size: 100%; background-repeat: no-repeat;"" xml:space=""preserve"" height=""100%"" width=""100%"">...</svg>
+  (Session info: chrome=120.0.6099.130)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [67803e69082ecdf4100315e987bf3852, clickElement {id=99586AD2B1512B8956282662B93BA293_element_17}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.130, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\LUCENT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61246}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61246/devtoo..., se:cdpVersion: 120.0.6099.130, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (67803e69082ecdf4100315e987bf3852)] -> xpath: //button[contains(text(),'Next')]]
+Session ID: 67803e69082ecdf4100315e987bf3852"
+"https://memdropshipdemo.myshopify.com/products/exemplary-family-name-steel-sign","30-12-2023","03.301 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/split-letter-monogram-steel-sign","30-12-2023","02.554 SECONDS ",
+"https://memdropshipdemo.myshopify.com/products/elaborate-tree-of-life-steel-sign","30-12-2023","03.654 SECONDS ",

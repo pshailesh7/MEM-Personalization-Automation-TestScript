@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-12-30T11:54:40 IST" name="personalizationSuite" finished-at="2023-12-30T12:04:56 IST" duration-ms="616269">
+    <groups>
+    </groups>
+    <test started-at="2023-12-30T11:54:40 IST" name="customfunctionTest" finished-at="2023-12-30T12:04:56 IST" duration-ms="616269">
+      <class name="Test_Script.Test_ValidationPersonalizationFunction">
+        <test-method is-config="true" signature="beforetestmethod()[pri:0, instance:Test_Script.Test_ValidationPersonalizationFunction@6aeb35e6]" started-at="2023-12-30T11:54:40 IST" name="beforetestmethod" finished-at="2023-12-30T11:54:41 IST" duration-ms="683" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforetestmethod -->
+        <test-method signature="customize_field_validation()[pri:0, instance:Test_Script.Test_ValidationPersonalizationFunction@6aeb35e6]" started-at="2023-12-30T11:54:41 IST" name="customize_field_validation" finished-at="2023-12-30T12:04:56 IST" duration-ms="615470" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- customize_field_validation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Test_Script.Test_ValidationPersonalizationFunction@6aeb35e6]" started-at="2023-12-30T12:04:56 IST" name="tearDown" finished-at="2023-12-30T12:04:56 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="aftermethod(org.testng.ITestResult)[pri:0, instance:Test_Script.Test_ValidationPersonalizationFunction@6aeb35e6]" started-at="2023-12-30T12:04:56 IST" name="aftermethod" finished-at="2023-12-30T12:04:56 IST" duration-ms="18" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=customize_field_validation status=SUCCESS method=Test_ValidationPersonalizationFunction.customize_field_validation()[pri:0, instance:Test_Script.Test_ValidationPersonalizationFunction@6aeb35e6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aftermethod -->
+      </class> <!-- Test_Script.Test_ValidationPersonalizationFunction -->
+    </test> <!-- customfunctionTest -->
+  </suite> <!-- personalizationSuite -->
+</testng-results>
