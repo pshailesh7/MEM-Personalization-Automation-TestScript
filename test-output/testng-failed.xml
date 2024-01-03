@@ -7,8 +7,8 @@
         <methods>
           <include name="tearDown"/>
           <include name="beforetestmethod"/>
+          <include name="test_function"/>
           <include name="aftermethod"/>
-          <include name="customize_field_validation"/>
         </methods>
       </class> <!-- Test_Script.Test_ValidationPersonalizationFunction -->
     </classes>

@@ -56,7 +56,7 @@ public class DataBaseConnection {
 		List<MerchantProduct> merchantproductlist = new ArrayList<MerchantProduct>();
 
 			ResultSet resultSetlist = statement.executeQuery(
-					"select mp.master_product_id,mp.title from" + " merchant_products mp where mp.app_store_id = "
+					"select mp.master_product_id,mp.title from merchant_products mp where mp.app_store_id = "
 							+ store.getAppStoreId() + " and store_product_id is not null LIMIT " + pageSize +" OFFSET "+offset);
 			while (resultSetlist.next()) {
 				MerchantProduct merchantProduct = new MerchantProduct();

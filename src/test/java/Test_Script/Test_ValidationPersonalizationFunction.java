@@ -7,14 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -22,9 +18,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -36,13 +30,11 @@ import MEM.QA.Base.BaseTest;
 import MEM.QA.DataBaseConfig.DataBaseConnection;
 import MEM.QA.DataBaseConfig.MerchantProduct;
 import MEM.QA.DataBaseConfig.Store;
-import MEM.QA.DataBaseConfig.UrlData;
 import Utility.ModelCSV;
-import net.bytebuddy.asm.Advice.Local;
 
 public class Test_ValidationPersonalizationFunction extends BaseTest {
 	
-	private ChromeDriver driver;
+	
 	List<ModelCSV> csvList = new ArrayList<ModelCSV>();
 
 	@Test
@@ -116,14 +108,11 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 				ModelCSV csv = new ModelCSV();
 				
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-				JavascriptExecutor js = (JavascriptExecutor) driver;
-				
-				
 				if (isElementVisible(driver, By.xpath("//div[@class='preview-root-app-wrapper']"))) {
-					js.executeScript("window.scrollBy(0,350)", "");
+					
 					logger = extent.createTest("Verify Personalize Button");
 					try {
-						wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='preview-root-app-wrapper']"))).click();					
+						wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='preview-root-app-wrapper']//child::button"))).click();					
 						} 
 					catch (Exception e) {
 						csv.setProductDomain(url);
@@ -144,11 +133,8 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 								try {
 									logger = extent.createTest("Verify color selection");
 									wait.until(
-											ExpectedConditions.elementToBeClickable(By.xpath("//div[@value='Gold']")))
-											.click();
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]")))
-											.click();
+									ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='preview-modal-box-wrapper']//div[@value='Black']"))).click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='footer-wrapper']//button[contains(text(),'Next')]"))).click();
 									logger.log(Status.PASS, "color selection done");
 									restartLoop = true;
 								} catch (Exception e) {
@@ -165,14 +151,9 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							if (isElementPresent(driver, By.xpath("//span[text()='Which Color would you like?']"))) {
 								try {
 									logger = extent.createTest("verify color selection");
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//div[@style='display: initial;']")))
-											.click();
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//li[contains(text(),'Gold')]"))).click();
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]")))
-											.click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@style='display: initial;']//child::div[@role='button']"))).click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(),'Black')]"))).click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='footer-wrapper']//button[contains(text(),'Next')]"))).click();
 									logger.log(Status.PASS, "color selection done successfully");
 									restartLoop = true;
 								} catch (Exception e) {
@@ -189,14 +170,9 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							if (isElementPresent(driver, By.xpath("//div[text()='Size']"))) {
 								try {
 									logger = extent.createTest("verify size selection");
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//div[@style='display: initial;']")))
-											.click();
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//li[normalize-space()='30\"']"))).click();
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]")))
-											.click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@style='display: initial;']//child::div[@role='button']"))).click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[normalize-space()='30\"']"))).click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='footer-wrapper']//button[contains(text(),'Next')]"))).click();
 									logger.log(Status.PASS, "size selection done successfully");
 									restartLoop = true;
 								} catch (Exception e) {
@@ -213,7 +189,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							if (isElementPresent(driver, By.xpath("//div[text()='Top text']"))) {
 								try {
 									logger = extent.createTest("verify top text field");
-									driver.findElement(By.name("properties[Top Text]")).sendKeys("LUCENT");
+									driver.findElement(By.xpath("//div[@class='preview-modal-box-wrapper']//child::input[@name='properties[Top Text]']")).sendKeys("LUCENT");
 									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]"))).click();
 									logger.log(Status.PASS, "Top Text Entered Successfully");
 									restartLoop = true;
@@ -231,7 +207,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							if (isElementPresent(driver, By.xpath("//div[text()='Middle text']"))) {
 								try {
 									logger = extent.createTest("verify Middle Text");
-									driver.findElement(By.name("properties[Middle Text]")).sendKeys("INNOVATION");
+									driver.findElement(By.xpath("//div[@class='preview-modal-box-wrapper']//input[@name='properties[Middle Text]']")).sendKeys("INNOVATION");
 									wait.until(ExpectedConditions
 											.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]")))
 											.click();
@@ -251,11 +227,9 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							if (isElementPresent(driver, By.xpath("//div[text()='Bottom text']"))) {
 								try {
 									logger = extent.createTest("Verify Bottom Text Field");
-									WebElement Bottontext = driver.findElement(By.name("properties[Bottom Text]"));
-									Bottontext.sendKeys("MACHANIC");
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]")))
-											.click();
+									
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='preview-modal-box-wrapper']//child::input[@name='properties[Bottom Text]']"))).sendKeys("MACHANIC");
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]"))).click();
 									logger.log(Status.PASS, "Bottom Text Entered succsfully");
 									restartLoop = true;
 								} catch (Exception e) {
@@ -271,7 +245,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							if (isElementPresent(driver, By.xpath("//div[text()='Name']"))) {
 								try {
 									logger = extent.createTest("Verify Name Field");
-									driver.findElement(By.name("properties[Name]")).sendKeys("LUCENT");
+									driver.findElement(By.name("//div[@class='preview-modal-box-wrapper']//child::input[@name='properties[Name]']")).sendKeys("LUCENT");
 									wait.until(ExpectedConditions
 											.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]")))
 											.click();
@@ -291,7 +265,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							if (isElementPresent(driver, By.xpath("//div[text()='Initial']"))) {
 								try {
 									logger = extent.createTest("Verify Initial Text Field");
-									WebElement initial = driver.findElement(By.name("properties[Initial]"));
+									WebElement initial = driver.findElement(By.xpath("//div[@class='preview-modal-box-wrapper']//child::select[@name='properties[Initial]']"));
 									Select selectinitial = new Select(initial);
 									selectinitial.selectByValue("S");
 									wait.until(ExpectedConditions
@@ -351,6 +325,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									break;
 								}
 							}
+							
 							// SELECT DOG STYLE
 
 							if (isElementPresent(driver,
@@ -374,18 +349,15 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									break;
 								}
 							}
+							
 
 							// INCREASE QUANTITY
 
 							if (isElementPresent(driver, By.xpath("//div[text()='Quantity']"))) {
 								try {
 									logger = extent.createTest("Verify Quantity Of The Product and Add to Cart");
-									wait.until(ExpectedConditions.elementToBeClickable(By
-											.xpath("//div[@class='pointer forward-arrow-container']//*[name()='svg']")))
-											.click();
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//button[contains(text(),'Add to cart')]")))
-											.click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='pointer forward-arrow-container']//*[name()='svg']"))).click();
+									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='footer-wrapper']//button[contains(text(),'Add to cart')]"))).click();
 									logger.log(Status.PASS, "Quantity Of The Product and Add to Cart successfully");
 									restartLoop = false;
 								} catch (Exception e) {
@@ -409,32 +381,29 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							csv.setData(formatTime(timeTaken));
 							csvList.add(csv);
 							logger.log(Status.INFO, "time taken for operation" + formatTime(timeTaken));
-							
-						}
+							break;
+							} 
 						
-					}
+						}
 					driver.quit();
 					
-				}
-
+					}
 				else
-
 				{
 					if (isElementPresent(driver, By.xpath("//div[@class='mema--mono--app']"))) {
 						long startTime = System.currentTimeMillis();
 						String currentDate = getCurrentDate();
 						logger = extent.createTest("Verify Personalize Function");
-						JavascriptExecutor js1 = (JavascriptExecutor) driver;
-						js1.executeScript("window.scrollTo(0, 500);");
-
+						boolean restartLoop = true;
 							// TOP TEXT FIELD
+						while (restartLoop) {
+							
 							if (isElementPresent(driver, By.name("properties[Top Text]"))) {
 								try {
 									logger = extent.createTest("verify top text field");
 									driver.findElement(By.name("properties[Top Text]")).sendKeys("LUCENT");
 									logger.log(Status.PASS, "Top Text Entered Successfully");
-									
-									break;
+									restartLoop=false;
 								} catch (Exception e) {
 									logger.log(Status.PASS, "Top Text Not Entered Exception Occurs " + e.getCause());
 									System.out.println(url + " An accurred Exception ;" + e.getCause());
@@ -442,7 +411,6 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									csv.setException(e.getMessage());
 									csvList.add(csv);
 									break;
-									
 								}
 							}
 							// MIDDLE TEXT FIELD
@@ -452,7 +420,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									logger = extent.createTest("verify Middle Text");
 									driver.findElement(By.name("properties[Middle Text]")).sendKeys("innovation");
 									logger.log(Status.PASS, "Middle Text Entered successfully");
-									
+									restartLoop=false;
 								} catch (Exception e) {
 									logger.log(Status.FAIL, "Middle Text Not Entered Exception Occurs " + e.getCause());
 									System.out.println(url + " An accurred Exception ;" + e.getCause());
@@ -468,7 +436,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									logger = extent.createTest("Verify Bottom Text Field");
 									driver.findElement(By.name("properties[Bottom Text]")).sendKeys("mechanical");
 									logger.log(Status.PASS, "Bottom Text Entered succsfully");
-									
+									restartLoop=false;
 								} catch (Exception e) {
 									logger.log(Status.FAIL, "Bottom Text Not Entered Exception Occurs " + e.getCause());
 									System.out.println(url + " An accurred Exception ;" + e.getCause());
@@ -484,25 +452,25 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									logger = extent.createTest("Verify Name Field");
 									driver.findElement(By.name("properties[Name]")).sendKeys("LUCENT");
 									logger.log(Status.PASS, "Name Text Entered Successfully");
-									
+									restartLoop=false;
 								} catch (Exception e) {
 									logger.log(Status.FAIL, "Name Text Not Entered Exception Occurs " + e.getCause());
 									System.out.println(url + " An accurred Exception ;" + e.getCause());
 									csv.setProductDomain(url);
 									csv.setException(e.getMessage());
 									csvList.add(csv);
-									
+									break;
 								}
 							}
 							// SELECT INITIAL FIELD
 							if (isElementPresent(driver, By.name("properties[Initial]"))) {
 								try {
 									logger = extent.createTest("Verify Initial Text Field");
-									WebElement initial = driver.findElement(By.xpath("//select[@id='monofield_4']"));
+									WebElement initial = driver.findElement(By.name("properties[Initial]"));
 									Select selectinitial = new Select(initial);
 									selectinitial.selectByValue("S");
 									logger.log(Status.PASS, "Selection of Initial Text successfully");
-									
+									restartLoop=false;
 								} catch (Exception e) {
 									logger.log(Status.FAIL,
 											"Selection of Initial Text Field Exception Occurs " + e.getCause());
@@ -510,7 +478,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									csv.setProductDomain(url);
 									csv.setException(e.getMessage());
 									csvList.add(csv);
-								
+									break;
 								}
 							}
 							// TOP LEFT TEXT
@@ -520,7 +488,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									logger = extent.createTest("Verify Top Left Text Field");
 									driver.findElement(By.name("properties[Top Left]")).sendKeys("Top Left Text");
 									logger.log(Status.PASS, "Top Left Text Entered Successfully");
-									
+									restartLoop=false;
 								} catch (Exception e) {
 									logger.log(Status.FAIL,
 											"Top Left Text Not Entered Exception Occurs " + e.getCause());
@@ -528,7 +496,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									csv.setProductDomain(url);
 									csv.setException(e.getMessage());
 									csvList.add(csv);
-								
+									break;
 								}
 							}
 							// TOP RIGHT TEXT
@@ -538,7 +506,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									logger = extent.createTest("Verify Top Right Text Field");
 									driver.findElement(By.name("properties[Top Right]")).sendKeys("Top Right Text");
 									logger.log(Status.PASS, "Top Right Text Entered Successfully");
-									
+									restartLoop=false;
 								} catch (Exception e) {
 									logger.log(Status.FAIL,
 											"Top Right Text Not Entered Exception Occurs " + e.getCause());
@@ -546,7 +514,74 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									csv.setProductDomain(url);
 									csv.setException(e.getMessage());
 									csvList.add(csv);
-									
+									break;
+								}
+							}
+							//BANNER TEXT FIELD
+							if (isElementPresent(driver, By.name("properties[Banner Text]"))) {
+								try {
+									logger = extent.createTest("Verify Banner Field");
+									driver.findElement(By.name("properties[Banner Text]")).sendKeys("Top Right Text");
+									logger.log(Status.PASS, "Banner Entered Successfully");
+									restartLoop=false;
+								} catch (Exception e) {
+									logger.log(Status.FAIL,
+											"Top Right Text Not Entered Exception Occurs " + e.getCause());
+									System.out.println(url + " An accurred Exception ;" + e.getCause());
+									csv.setProductDomain(url);
+									csv.setException(e.getMessage());
+									csvList.add(csv);
+									break;
+								}
+							}
+							if (isElementPresent(driver, By.name("properties[Your Personalization]"))) {
+								try {
+									logger = extent.createTest("Verify Banner Field");
+									driver.findElement(By.name("properties[Your Personalization]")).sendKeys("Lucent");
+									logger.log(Status.PASS, "Banner Entered Successfully");
+									restartLoop=false;
+								} catch (Exception e) {
+									logger.log(Status.FAIL,
+											"Top Right Text Not Entered Exception Occurs " + e.getCause());
+									System.out.println(url + " An accurred Exception ;" + e.getCause());
+									csv.setProductDomain(url);
+									csv.setException(e.getMessage());
+									csvList.add(csv);
+									break;
+								}
+							}
+							
+							if (isElementPresent(driver, By.name("properties[Your Personalization]"))) {
+								try {
+									logger = extent.createTest("Verify Banner Field");
+									driver.findElement(By.name("properties[Your Personalization]")).sendKeys("Lucent");
+									logger.log(Status.PASS, "Banner Entered Successfully");
+									restartLoop=false;
+								} catch (Exception e) {
+									logger.log(Status.FAIL,
+											"Top Right Text Not Entered Exception Occurs " + e.getCause());
+									System.out.println(url + " An accurred Exception ;" + e.getCause());
+									csv.setProductDomain(url);
+									csv.setException(e.getMessage());
+									csvList.add(csv);
+									break;
+								}
+							}
+							
+							if (isElementPresent(driver, By.name("properties[Text]"))) {
+								try {
+									logger = extent.createTest("Verify Banner Field");
+									driver.findElement(By.name("properties[Text]")).sendKeys("Lucent");
+									logger.log(Status.PASS, "Text Entered Successfully");
+									restartLoop=false;
+								} catch (Exception e) {
+									logger.log(Status.FAIL,
+											"Top Right Text Not Entered Exception Occurs " + e.getCause());
+									System.out.println(url + " An accurred Exception ;" + e.getCause());
+									csv.setProductDomain(url);
+									csv.setException(e.getMessage());
+									csvList.add(csv);
+									break;
 								}
 							}
 							// SELECT DOG STYLE
@@ -559,35 +594,17 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 									selectdogstyle.selectByValue("Wire-Hair");
 									wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Next')]"))).click();
 									logger.log(Status.PASS, "Dog Style Select Successfully");
-									
+									restartLoop=false;
 								} catch (Exception e) {
 									logger.log(Status.FAIL,"Fail To Select Dog Style Exception Occurs " + e.getCause());
 									System.out.println(url + " An accurred Exception ;" + e.getCause());
 									csv.setProductDomain(url);
 									csv.setException(e.getMessage());
 									csvList.add(csv);
-									
+									break;
 								}
 							}
-							// ADD TO CART BUTTON
-
-							if (isElementPresent(driver, By.xpath("//span[contains(text(),'Add to cart')]"))) {
-								try {
-									logger = extent.createTest("Verify Quantity Of The Product and Add to Cart");
-									wait.until(ExpectedConditions
-											.elementToBeClickable(By.xpath("//button[contains(text(),'Add to cart')]")))
-											.click();
-									logger.log(Status.PASS, "Quantity Of The Product and Add to Cart successfully");
-								} catch (Exception e) {
-									logger.log(Status.FAIL,
-											"Unable to Increase Quantity and add to cart " + e.getCause());
-									System.out.println(url + " An accurred Exception ;" + e.getCause());
-									csv.setProductDomain(url);
-									csv.setException(e.getMessage());
-									csvList.add(csv);
-									
-								}
-							}
+							
 							long endTime = System.currentTimeMillis();
 							long timeTaken = endTime - startTime;
 							logger.log(Status.PASS, "Customization Successfully Done");
@@ -597,27 +614,19 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 							csv.setData(formatTime(timeTaken));
 							csvList.add(csv);
 							logger.log(Status.INFO, " Time Taken for Operation" + formatTime(timeTaken));
-							
-						
-						
+							break;
+						}
+					
 					}
 					driver.quit();
 				}
 				generateCSV(csvList);
 			}
-//			++pageNumber;
-//			offset = (pageNumber - 1) * pageSize;
-//			List<MerchantProduct> merchantProductList = databaseConnection.getMerchantProducts(store, statement,
-//					pageSize, offset);
-//			urlList = databaseConnection.getMasterProducts(merchantProductList, statement, store, pageSize, offset);
-//			if (urlList.size() > 0) {
-//
-//				test_function(store, databaseConnection, urlList, statement, pageNumber, pageSize, offset);
-//			}
-
-		} catch (NoSuchElementException e) {
-			e.printStackTrace();
-		}
+			
+		} catch (TimeoutException e) {
+			System.out.println("page not loaded");
+			
+					}
 
 	}
 	private static String getCurrentDate() {
@@ -629,7 +638,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 	private static String formatTime(long millis) {
 		
 		long seconds = millis / 1000;
-		long minutes = seconds / 60;
+//		long minutes = seconds / 60;
 		
 		String executiontime =String.format("%02d.%02d", seconds % 60, millis % 1000) + " SECONDS ";
 		
@@ -637,7 +646,7 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 	}
 	private static boolean isElementVisible(WebDriver driver, By by) {
 	    try {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
 	        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='preview-root-app-wrapper']")));
 	        return true;
 	    } catch (TimeoutException e) {
@@ -666,7 +675,6 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 			
 		}
 	}
-
 	@AfterMethod
 	public void tearDown() {
 		if (driver != null) {
@@ -675,3 +683,4 @@ public class Test_ValidationPersonalizationFunction extends BaseTest {
 		}
 	}
 }
+
